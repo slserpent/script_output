@@ -20,8 +20,8 @@ class ScriptOutput {
 	public const TABLE_HEADER_ROWS = 2;
 
 	/**
-	 * @param null $options optional output mode selection, takes an array of output formats and targets. if omitted,
-	 * output mode is selected automatically based on environment.
+	 * @param null $options optional. takes an array of output options. if omitted, output mode is
+	 * selected automatically based on environment. use multiple arrays for multiple output targets.
 	 * 		[
 	 * 		'format' => "plaintext" or "html" or omitted for automatic,
 	 * 		'file' => "path to file relative to script or absolute" or omitted for STDOUT,
@@ -34,8 +34,9 @@ class ScriptOutput {
 		//TODO: make it so only one target can possibly be stdout?
 
 		if (!ScriptOutput::can_iterate($options)) {
+			//blank options array if nothing were passed
 			$options[] = [];
-		} elseif (ScriptOutput::has_value($options['format']) || ScriptOutput::has_value($options['file'])) {
+		} elseif (!is_array(reset($options))) {
 			//make sure the array of options is 2D so we can iterate
 			$tmp_options = $options;
 			unset($options);

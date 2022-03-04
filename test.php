@@ -108,3 +108,6 @@ $print->line($print);
 
 $timestamp = new ScriptOutput(['format' => 'Timestamp']);
 $timestamp->line("wheeeeee custom formatting");
+
+$new = new ScriptOutput(['title' => $title]);
+$new->line("stuff");
