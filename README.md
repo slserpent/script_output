@@ -45,6 +45,7 @@ if (ScriptOutput::can_iterate($options)) {
 } else {
 	$output->header("Options");
 	$output->line("input: parameter for your input");
+	exit();
 }
 ```
 
